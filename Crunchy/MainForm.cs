@@ -1,4 +1,5 @@
-﻿using FFmpeg.NET;
+﻿using Crunchy.Crunchyroll;
+using FFmpeg.NET;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +16,7 @@ namespace Crunchy
 {
     public partial class MainForm : Form
     {
-        private Crunchyroll crunchyroll;
+        private Crunchyroll.Crunchyroll crunchyroll;
         private Dictionary<int, dynamic> Cache;
 
         public MainForm()
@@ -24,7 +24,7 @@ namespace Crunchy
             InitializeComponent();
 
             Cache = new Dictionary<int, dynamic>();
-            crunchyroll = new Crunchyroll();
+            crunchyroll = new Crunchyroll.Crunchyroll();
         }
 
         private async void btnFrmUrl_Click(object sender, EventArgs e)
@@ -67,7 +67,15 @@ namespace Crunchy
                     switch (ex.ErrorCode)
                     {
                         case 0: await crunchyroll.InitializeAsync(); break;
-                        case 1: await crunchyroll.InitializeAsync(); break;
+                        case 1:
+                            using (var loginDiag = new LoginDialog())
+                            {
+                                if (loginDiag.ShowDialog() == DialogResult.OK)
+                                {
+                                    await crunchyroll.LoginAsync(loginDiag.Username, loginDiag.Password);
+                                }
+                            }
+                            break;
                     }
                 }
             }
@@ -122,7 +130,7 @@ namespace Crunchy
             }
             else
             {
-                var series = Cache[0][0];
+                var series = (SeriesInfo)Cache[0][0];
                 path = $"{txtPath.Text}\\{series.Name}";
                 Directory.CreateDirectory(path);
 
@@ -138,8 +146,8 @@ namespace Crunchy
                      ? streaminfo.Streams.FirstOrDefault(a => a.Quality.Equals("ultra"))
                      : streaminfo.Streams.FirstOrDefault(a => a.Quality.Equals("adaptive"));
                 var programs = await stream.GetStreamProgramsAsync();
-                (string ProgramUrl, Size Quality) program = default;
 
+                (string ProgramUrl, Size Quality) program = default;
                 switch (cmbQlty.SelectedItem)
                 {
                     case "360p":
@@ -156,6 +164,18 @@ namespace Crunchy
 
                     case "1080p":
                         program = programs.FirstOrDefault(a => a.Quality.Width == 1080);
+                        break;
+
+                    case "Best":
+                        program = programs.OrderByDescending(a => a.Quality.Width)
+                            .FirstOrDefault();
+
+                        break;
+
+                    case "Poorest":
+                        program = programs.OrderBy(a => a.Quality.Width)
+                            .FirstOrDefault();
+
                         break;
                 }
 

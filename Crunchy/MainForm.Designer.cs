@@ -56,6 +56,7 @@
             this.cmbSeasons = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(93, 123);
+            this.txtPath.Location = new System.Drawing.Point(93, 135);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(448, 23);
@@ -79,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 126);
+            this.label2.Location = new System.Drawing.Point(25, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
             this.label2.TabIndex = 2;
@@ -96,7 +97,7 @@
             // 
             // btnBrwsPth
             // 
-            this.btnBrwsPth.Location = new System.Drawing.Point(466, 153);
+            this.btnBrwsPth.Location = new System.Drawing.Point(466, 165);
             this.btnBrwsPth.Name = "btnBrwsPth";
             this.btnBrwsPth.Size = new System.Drawing.Size(75, 25);
             this.btnBrwsPth.TabIndex = 5;
@@ -107,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 192);
+            this.label3.Location = new System.Drawing.Point(35, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 16);
             this.label3.TabIndex = 6;
@@ -118,11 +119,13 @@
             this.cmbQlty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQlty.FormattingEnabled = true;
             this.cmbQlty.Items.AddRange(new object[] {
+            "Poorest",
             "360p",
             "480p",
             "720p",
-            "1080p"});
-            this.cmbQlty.Location = new System.Drawing.Point(93, 189);
+            "1080p",
+            "Best"});
+            this.cmbQlty.Location = new System.Drawing.Point(93, 193);
             this.cmbQlty.Name = "cmbQlty";
             this.cmbQlty.Size = new System.Drawing.Size(121, 24);
             this.cmbQlty.TabIndex = 7;
@@ -149,7 +152,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 227);
+            this.label5.Location = new System.Drawing.Point(28, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 10;
@@ -169,7 +172,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(93, 223);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(93, 237);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.92308F));
@@ -261,7 +264,7 @@
             // 
             // btnLgn
             // 
-            this.btnLgn.Location = new System.Drawing.Point(466, 344);
+            this.btnLgn.Location = new System.Drawing.Point(466, 358);
             this.btnLgn.Name = "btnLgn";
             this.btnLgn.Size = new System.Drawing.Size(75, 25);
             this.btnLgn.TabIndex = 12;
@@ -271,7 +274,7 @@
             // 
             // btnRfrshTkns
             // 
-            this.btnRfrshTkns.Location = new System.Drawing.Point(359, 344);
+            this.btnRfrshTkns.Location = new System.Drawing.Point(359, 358);
             this.btnRfrshTkns.Name = "btnRfrshTkns";
             this.btnRfrshTkns.Size = new System.Drawing.Size(101, 25);
             this.btnRfrshTkns.TabIndex = 13;
@@ -280,7 +283,7 @@
             // 
             // btnDltTkns
             // 
-            this.btnDltTkns.Location = new System.Drawing.Point(252, 344);
+            this.btnDltTkns.Location = new System.Drawing.Point(252, 358);
             this.btnDltTkns.Name = "btnDltTkns";
             this.btnDltTkns.Size = new System.Drawing.Size(101, 25);
             this.btnDltTkns.TabIndex = 14;
@@ -289,7 +292,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(404, 385);
+            this.button1.Location = new System.Drawing.Point(404, 399);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 25);
             this.button1.TabIndex = 16;
@@ -298,7 +301,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(466, 385);
+            this.button2.Location = new System.Drawing.Point(466, 399);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 25);
             this.button2.TabIndex = 15;
@@ -308,18 +311,18 @@
             // 
             // lbDownloadProgress
             // 
-            this.lbDownloadProgress.Location = new System.Drawing.Point(28, 381);
+            this.lbDownloadProgress.Location = new System.Drawing.Point(96, 395);
             this.lbDownloadProgress.Name = "lbDownloadProgress";
-            this.lbDownloadProgress.Size = new System.Drawing.Size(370, 33);
+            this.lbDownloadProgress.Size = new System.Drawing.Size(302, 33);
             this.lbDownloadProgress.TabIndex = 18;
             this.lbDownloadProgress.Text = "...";
-            this.lbDownloadProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbDownloadProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbSeasons
             // 
             this.cmbSeasons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSeasons.FormattingEnabled = true;
-            this.cmbSeasons.Location = new System.Drawing.Point(93, 85);
+            this.cmbSeasons.Location = new System.Drawing.Point(93, 91);
             this.cmbSeasons.Name = "cmbSeasons";
             this.cmbSeasons.Size = new System.Drawing.Size(342, 24);
             this.cmbSeasons.TabIndex = 20;
@@ -327,7 +330,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 88);
+            this.label4.Location = new System.Drawing.Point(36, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 16);
             this.label4.TabIndex = 19;
@@ -336,17 +339,27 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(451, 87);
+            this.checkBox1.Location = new System.Drawing.Point(451, 93);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(85, 20);
             this.checkBox1.TabIndex = 21;
             this.checkBox1.Text = "All seasons";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(41, 403);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Status: ";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(553, 422);
+            this.ClientSize = new System.Drawing.Size(553, 438);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cmbSeasons);
             this.Controls.Add(this.label4);
@@ -410,5 +423,6 @@
         private System.Windows.Forms.ComboBox cmbSeasons;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label10;
     }
 }
