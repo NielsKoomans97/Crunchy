@@ -66,7 +66,10 @@ namespace Crunchy
                 {
                     switch (ex.ErrorCode)
                     {
-                        case 0: await crunchyroll.InitializeAsync(); break;
+                        case 0:
+                            await crunchyroll.InitializeAsync(); lbUid.Text = crunchyroll.Tokens.SessionId;
+                            break;
+
                         case 1:
                             using (var loginDiag = new LoginDialog())
                             {
@@ -223,6 +226,31 @@ namespace Crunchy
                 cmbSeasons.Enabled = false;
             else
                 cmbSeasons.Enabled = true;
+        }
+
+        private async void btnRfrshTkns_Click(object sender, EventArgs e)
+        {
+            await crunchyroll.InitializeAsync();
+
+            using (var loginDiag = new LoginDialog())
+            {
+                if (loginDiag.ShowDialog() == DialogResult.OK)
+                {
+                    await crunchyroll.LoginAsync(loginDiag.Username, loginDiag.Password);
+                }
+            }
+
+            lbUname.Text = $"{crunchyroll.Tokens.Account.username}  ({crunchyroll.Tokens.Account.user_id} | {crunchyroll.Tokens.Account.premium})";
+            lbUid.Text = crunchyroll.Tokens.SessionId;
+            lbAT.Text = crunchyroll.Tokens.AuthToken;
+            lbATE.Text = crunchyroll.Tokens.AuthExpires.ToString();
+
+            crunchyroll.SaveTokens($"{AppDomain.CurrentDomain.BaseDirectory}\\tokens");
+        }
+
+        private void btnDltTkns_Click(object sender, EventArgs e)
+        {
+            File.Delete($"{AppDomain.CurrentDomain.BaseDirectory}\\tokens");
         }
     }
 }

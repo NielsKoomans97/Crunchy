@@ -280,6 +280,7 @@
             this.btnRfrshTkns.TabIndex = 13;
             this.btnRfrshTkns.Text = "Refresh Tokens";
             this.btnRfrshTkns.UseVisualStyleBackColor = true;
+            this.btnRfrshTkns.Click += new System.EventHandler(this.btnRfrshTkns_Click);
             // 
             // btnDltTkns
             // 
@@ -289,6 +290,7 @@
             this.btnDltTkns.TabIndex = 14;
             this.btnDltTkns.Text = "Delete tokens";
             this.btnDltTkns.UseVisualStyleBackColor = true;
+            this.btnDltTkns.Click += new System.EventHandler(this.btnDltTkns_Click);
             // 
             // button1
             // 
@@ -345,6 +347,7 @@
             this.checkBox1.TabIndex = 21;
             this.checkBox1.Text = "All seasons";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // label10
             // 
